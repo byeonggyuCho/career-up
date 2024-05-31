@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), dts({ insertTypesEntry: true })],
   build: {
     lib: {
-      entry: "src/index.ts",
+      entry: "src/index.tsx",
       name: "shell-router",
       fileName: "index",
     },
