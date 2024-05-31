@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { Button } from "@career-up/ui-kit";
+import { Button, Icon } from "@career-up/ui-kit";
 // package에서 글로벌 스타일 사용
 import "@career-up/ui-kit/index.css";
 
@@ -12,7 +12,10 @@ const App = () => (
     <div>Language: TypeScript</div>
     <div>CSS: Empty CSS</div>
     <div>
-      <Button></Button>
+      <Button>안녕</Button>
+    </div>
+    <div>
+      <Icon.Home />
     </div>
   </div>
 );
