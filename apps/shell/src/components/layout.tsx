@@ -1,31 +1,109 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
-import { appPostingBaseName } from "../constants/prefix";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { appPostingBaseName, microAppRoute } from "../constants/prefix";
+import { Button, Icon } from "@career-up/ui-kit";
+import Auth0ProviderWIthNavigator from "./auto0-provider-with-navigator";
+import { useAuth0 } from "@auth0/auth0-react";
+
+const Logo = () => (
+  <svg
+    data-v-62b4fdfc=""
+    width="30"
+    height="30"
+    viewBox="0 0 76 76"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g data-v-62b4fdfc="" clipPath="url(#clip0_2879_347)">
+      <path
+        data-v-62b4fdfc=""
+        d="M75.461 37.722a.219.219 0 00.327-.19C75.575 16.805 58.702.069 37.928.069a37.617 37.617 0 00-18.58 4.88.22.22 0 000 .38L75.46 37.722zM5.328 19.347a.22.22 0 00-.38 0 37.617 37.617 0 00-4.88 18.58c0 20.775 16.737 37.64 37.458 37.86a.219.219 0 00.19-.326L5.327 19.347zM12.326 12.47l35.666 61.776a.22.22 0 00.25.099c12.616-3.568 22.543-13.495 26.11-26.11a.22.22 0 00-.098-.25L12.47 12.324c-.09-.052-.197.054-.144.145z"
+        fill="#FC1C49"
+      ></path>
+    </g>
+    <defs data-v-62b4fdfc="">
+      <clipPath data-v-62b4fdfc="" id="clip0_2879_347">
+        <path data-v-62b4fdfc="" fill="#fff" d="M0 0h500v75.901H0z"></path>
+      </clipPath>
+    </defs>
+  </svg>
+);
 
 export default function Layout() {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
+  const handleLogin = () =>
+    loginWithRedirect({
+      appState: {
+        returnTo: "/",
+      },
+    });
+  const handleLogout = () =>
+    logout({
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
+    });
   return (
     <div>
-      <header>
-        <div>
-          <Link to="/">
+      <header className="global-nav">
+        <div className="global-nav-content">
+          <Link to="/" className="global-nav-logo">
+            <Logo />
             <span>Career UP</span>
           </Link>
+          {!isAuthenticated && (
+            <div
+              style={{
+                marginLeft: 20,
+              }}
+            >
+              <Button onClick={handleLogin}>로그인</Button>
+            </div>
+          )}
+          {isAuthenticated && (
+            <div>
+              <Button onClick={handleLogout}>로그아웃</Button>
+            </div>
+          )}
+          <nav className="global-nav-nav">
+            <ul className="global-nav-items">
+              <li className="global-nav-item">
+                <NavLink
+                  className={"global-nav-link"}
+                  to={microAppRoute.posting}
+                >
+                  <Icon.Home />
+                  <span className="global-nav-link-text">홈</span>
+                </NavLink>
+              </li>
+              <li className="global-nav-item">
+                <NavLink
+                  className={"global-nav-link"}
+                  to={microAppRoute.network}
+                >
+                  <Icon.UserFriends />
+                  <span className="global-nav-link-text">인맥</span>
+                </NavLink>
+              </li>
+              <li className="global-nav-item">
+                <NavLink className={"global-nav-link"} to={microAppRoute.edu}>
+                  <Icon.LaptopCode />
+                  <span className="global-nav-link-text">교육</span>
+                </NavLink>
+              </li>
+              <li className="global-nav-item">
+                <NavLink className={"global-nav-link"} to={microAppRoute.job}>
+                  <Icon.Briefcase />
+                  <span className="global-nav-link-text">채용공고</span>
+                </NavLink>
+              </li>
+            </ul>
+          </nav>{" "}
         </div>
-        <nav>
-          <ul>
-            <li>
-              <Link to={`${appPostingBaseName}`}>포스팅홈</Link>
-            </li>
-            <li>
-              <Link to={`${appPostingBaseName}/1`}>포스팅_1</Link>
-            </li>
-          </ul>
-        </nav>
       </header>
 
-      <div className="container">
-        <Outlet></Outlet>
-      </div>
+      <div className="global-container">{isAuthenticated && <Outlet />}</div>
     </div>
   );
 }

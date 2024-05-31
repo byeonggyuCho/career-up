@@ -3,6 +3,7 @@ import App from "./App";
 import React from "react";
 // package에서 글로벌 스타일 사용
 import "@career-up/ui-kit/index.css";
+import "./index.css";
 
 const container = document.getElementById("app");
 if (!container) throw new Error("container is not found");
