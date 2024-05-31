@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.css";
 import { Button } from "@career-up/ui-kit";
+// package에서 글로벌 스타일 사용
+import "@career-up/ui-kit/index.css";
 
 const App = () => (
   <div className="container">
