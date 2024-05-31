@@ -12,6 +12,79 @@ importers:
         specifier: ^1.13.3
         version: 1.13.3
 
+  apps/posting:
+    dependencies:
+      '@career-up/shell-router':
+        specifier: workspace:*
+        version: link:../../packages/shell-router
+      '@career-up/ui-kit':
+        specifier: workspace:*
+        version: link:../../packages/ui-kit
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.15.8
+        version: 7.24.6
+      '@babel/plugin-transform-runtime':
+        specifier: ^7.15.8
+        version: 7.24.6(@babel/core@7.24.6)
+      '@babel/preset-env':
+        specifier: ^7.15.8
+        version: 7.24.6(@babel/core@7.24.6)
+      '@babel/preset-react':
+        specifier: ^7.14.5
+        version: 7.24.6(@babel/core@7.24.6)
+      '@babel/preset-typescript':
+        specifier: ^7.10.4
+        version: 7.24.6(@babel/core@7.24.6)
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.3.0
+      autoprefixer:
+        specifier: ^10.1.0
+        version: 10.4.19(postcss@8.4.38)
+      babel-loader:
+        specifier: ^8.2.2
+        version: 8.3.0(@babel/core@7.24.6)(webpack@5.91.0(webpack-cli@4.10.0))
+      css-loader:
+        specifier: ^6.3.0
+        version: 6.11.0(webpack@5.91.0(webpack-cli@4.10.0))
+      dotenv-webpack:
+        specifier: ^8.0.1
+        version: 8.1.0(webpack@5.91.0(webpack-cli@4.10.0))
+      html-webpack-plugin:
+        specifier: ^5.3.2
+        version: 5.6.0(webpack@5.91.0(webpack-cli@4.10.0))
+      postcss:
+        specifier: ^8.2.1
+        version: 8.4.38
+      postcss-loader:
+        specifier: ^4.1.0
+        version: 4.3.0(postcss@8.4.38)(webpack@5.91.0(webpack-cli@4.10.0))
+      style-loader:
+        specifier: ^3.3.0
+        version: 3.3.4(webpack@5.91.0(webpack-cli@4.10.0))
+      typescript:
+        specifier: ^4.5.2
+        version: 4.9.5
+      webpack:
+        specifier: ^5.57.1
+        version: 5.91.0(webpack-cli@4.10.0)
+      webpack-cli:
+        specifier: ^4.10.0
+        version: 4.10.0(webpack-dev-server@4.15.2)(webpack@5.91.0)
+      webpack-dev-server:
+        specifier: ^4.3.1
+        version: 4.15.2(webpack-cli@4.10.0)(webpack@5.91.0)
+
   apps/shell:
     dependencies:
       '@career-up/shell-router':
