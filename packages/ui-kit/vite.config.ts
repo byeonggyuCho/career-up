@@ -18,7 +18,7 @@ export default defineConfig({
       output: {
         globals: {
           react: "React",
-          "react-dom": "ReactDom",
+          "react-dom": "ReactDOM",
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === "style.css") {
