@@ -1,0 +1,47 @@
+{
+  "folders": [
+    {
+      "name": "shell",
+      "path": "apps/shell"
+    },
+    {
+      "name": "posting",
+      "path": "apps/posting"
+    },
+    {
+      "name": "edu",
+      "path": "apps/edu"
+    },
+    {
+      "name": "network",
+      "path": "apps/network"
+    },
+    {
+      "name": "job",
+      "path": "apps/job"
+    },
+    {
+      "name": "fragment-recommend-connections",
+      "path": "fragments/fragment-recommend-connections"
+    },
+    {
+      "name": "shell-router",
+      "path": "packages/shell-router"
+    },
+    {
+      "name": "ui-kit",
+      "path": "packages/ui-kit"
+    },
+    {
+      "name": "server",
+      "path": "server"
+    },
+    {
+      "name": "monorepo",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "monorepo/node_modules/typescript/lib"
+  }
+}

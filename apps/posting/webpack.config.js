@@ -27,7 +27,22 @@ module.exports = (_, argv) => ({
       },
       {
         test: /\.(css|s[ac]ss)$/i,
+        exclude: /\.module\.css$/i,
         use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+      {
+        test: /\.module\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+            },
+          },
+          "postcss-loader",
+        ],
       },
       {
         test: /\.(ts|tsx|js|jsx)$/,
