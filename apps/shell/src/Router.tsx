@@ -10,6 +10,7 @@ import Auth0ProviderWIthNavigator from "./components/auto0-provider-with-navigat
 
 const AppPostingLazy = lazy(() => import("./components/app-posting"));
 const AppEduLazy = lazy(() => import("./components/app-edu"));
+const AppNetworkLazy = lazy(() => import("./components/app-network"));
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<div>로딩중</div>}>
             <AppEduLazy />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${microAppRoute.network}/*`,
+        element: (
+          <Suspense fallback={<div>로딩중</div>}>
+            <AppNetworkLazy />
           </Suspense>
         ),
       },

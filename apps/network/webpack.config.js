@@ -2,9 +2,15 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const Dotenv = require("dotenv-webpack");
 const deps = require("./package.json").dependencies;
+
+const moduleScope = "@career-up";
+const workspacePackages = Object.keys(deps).filter((key) =>
+  key.startsWith(moduleScope)
+);
+
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:3003/",
   },
 
   resolve: {
@@ -12,7 +18,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 3000,
+    port: 3003,
     historyApiFallback: true,
   },
 
@@ -41,14 +47,12 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "shell",
+      name: "network",
       filename: "remoteEntry.js",
-      remotes: {
-        posting: "posting@http://localhost:3001/remoteEntry.js",
-        edu: "edu@http://localhost:3002/remoteEntry.js",
-        network: "network@http://localhost:3003/remoteEntry.js",
+      remotes: {},
+      exposes: {
+        "./injector": "./src/injector.tsx",
       },
-      exposes: {},
       shared: {
         ...deps,
         react: {
@@ -59,12 +63,15 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
-        "@career-up/ui-kit": {
-          singleton: true,
-        },
-        "@career-up/shell-router": {
-          singleton: true,
-        },
+        ...workspacePackages.reduce(
+          (re, packageName) => ({
+            ...re,
+            [packageName]: {
+              singleton: true,
+            },
+          }),
+          {}
+        ),
       },
     }),
     new HtmlWebPackPlugin({
