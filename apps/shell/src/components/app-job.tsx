@@ -2,16 +2,16 @@ import { useShellEvent } from "@career-up/shell-router";
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { MicroApp, microAppRoute } from "../constants/prefix";
-import inject from "network/injector";
+import inject from "job/injector";
 
-const prefix = MicroApp.network;
+const prefix = MicroApp.job;
 const appName = `app-${prefix}`;
 
 /**
  * @todo 컴포넌트 빌더로 만들어도 되겠다.
  * @returns
  */
-export default function AppNetwork() {
+export default function AppJob() {
   useShellEvent(appName, microAppRoute[prefix]);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -30,9 +30,7 @@ export default function AppNetwork() {
     isFirstRunRef.current = false;
   }, [location]);
 
-  useEffect(() => {
-    return () => unmountRef.current();
-  }, []);
+  useEffect(() => () => unmountRef.current(), []);
 
   return <div ref={wrapperRef} id={appName} />;
 }

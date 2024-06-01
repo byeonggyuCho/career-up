@@ -1,3 +1,18 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+  ],
+
+  ignorePatterns: ["dist", ".eslintrc.js", "webpack.config.js"],
+  parser: "@typescript-eslint/parser",
+  rules: {
+    "@typescript-eslint/consistent-type-imports": "error",
+  },
+};
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const Dotenv = require("dotenv-webpack");
@@ -10,7 +25,7 @@ const workspacePackages = Object.keys(deps).filter((key) =>
 
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "http://localhost:3004/",
   },
 
   resolve: {
@@ -18,7 +33,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 3002,
+    port: 3004,
     historyApiFallback: true,
   },
 
@@ -47,12 +62,10 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "edu",
+      name: "job",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {
-        "./injector": "./src/injector.tsx",
-      },
+      exposes: { "./injector": "./src/injector.tsx" },
       shared: {
         ...deps,
         react: {

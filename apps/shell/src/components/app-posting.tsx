@@ -1,11 +1,14 @@
 import { useShellEvent } from "@career-up/shell-router";
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { appPostingBaseName } from "../constants/prefix";
+import { MicroApp, microAppRoute } from "../constants/prefix";
 import inject from "posting/injector";
 
+const prefix = MicroApp.posting;
+const appName = `app-${prefix}`;
+
 export default function AppPosting() {
-  useShellEvent("app-posting", appPostingBaseName);
+  useShellEvent(appName, microAppRoute[prefix]);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const isFirstRunRef = useRef(true);
@@ -18,16 +21,12 @@ export default function AppPosting() {
     unmountRef.current = inject({
       rootElement: wrapperRef.current,
       routerType: "memory",
-      basePath: location.pathname.replace(appPostingBaseName, ""),
+      basePath: location.pathname.replace(microAppRoute[prefix], ""),
     });
     isFirstRunRef.current = false;
   }, [location]);
 
-  useEffect(() => {
-    return () => {
-      unmountRef.current();
-    };
-  }, []);
+  useEffect(() => () => unmountRef.current(), []);
 
-  return <div ref={wrapperRef} id="app-posting" />;
+  return <div ref={wrapperRef} id={appName} />;
 }
