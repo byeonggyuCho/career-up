@@ -7,12 +7,24 @@ import { createPost, getPosts, removePost } from "../apis";
 import Post from "../components/post";
 import WritePost from "../components/write-post";
 import { useAuth0Client } from "@career-up/shell-router";
+import { importRemote } from "@module-federation/utilities/.";
+import { ErrorBoundary } from "react-error-boundary";
 
-const RecommendsConnectionsContainer = React.lazy(
-  () => import("fragment_recommend_connections/container")
+const RecommendsConnectionsContainer = React.lazy(() =>
+  importRemote({
+    scope: "fragment_recommend_connections",
+    url: process.env.REACT_APP_MICRO_APP_FRAGMENT || "",
+    module: "container",
+    remoteEntryFileName: "remoteEntry.js",
+  })
 );
-const RecommendsJobsContainer = React.lazy(
-  () => import("job/fragment-recommend-jobs")
+const RecommendsJobsContainer = React.lazy(() =>
+  importRemote({
+    scope: "job",
+    url: process.env.REACT_APP_MICRO_APP_JOB_URL || "",
+    module: "fragment-recommend-jobs",
+    remoteEntryFileName: "remoteEntry.js",
+  })
 );
 
 export default function HomPage() {
@@ -49,12 +61,18 @@ export default function HomPage() {
         ))}
       </div>
       <div className="posting--page-home-right">
-        <Suspense fallback="loading">
-          <RecommendsConnectionsContainer />
-        </Suspense>
-        <Suspense fallback="loading">
-          <RecommendsJobsContainer />
-        </Suspense>
+        <ErrorBoundary
+          fallback={<div>RecommendsConnectionsContainer이 안 나옴</div>}
+        >
+          <Suspense fallback="loading">
+            <RecommendsConnectionsContainer />
+          </Suspense>
+        </ErrorBoundary>
+        <ErrorBoundary fallback={<div>RecommendsJobsContainer가 안 나옴</div>}>
+          <Suspense fallback="loading">
+            <RecommendsJobsContainer />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </div>
   );
