@@ -4,11 +4,12 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import { appPostingBaseName } from "./constants/prefix";
+import { appPostingBaseName, microAppRoute } from "./constants/prefix";
 import Layout from "./components/layout";
 import Auth0ProviderWIthNavigator from "./components/auto0-provider-with-navigator";
 
 const AppPostingLazy = lazy(() => import("./components/app-posting"));
+const AppEduLazy = lazy(() => import("./components/app-edu"));
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<div>로딩중</div>}>
             <AppPostingLazy />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${microAppRoute.edu}/*`,
+        element: (
+          <Suspense fallback={<div>로딩중</div>}>
+            <AppEduLazy />
           </Suspense>
         ),
       },
