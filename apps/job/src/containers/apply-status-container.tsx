@@ -5,7 +5,7 @@ import { done, fail, start } from "../redux/modules/applyStatus";
 import { getApplyStatus } from "../apis";
 import type { AppDispatch } from "../redux/create";
 import { type RootState } from "../redux/create";
-import useAuth0Client from "../hooks/use-auth0-client";
+import { useAuth0Client } from "@career-up/shell-router";
 
 const ApplyStatusContainer: React.FC = () => {
   const auth0Client = useAuth0Client();

@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { connectionsAtom } from "../atoms";
 import Connections from "../components/connections";
 import { getConnections } from "../apis";
-import useAuth0Client from "../hooks/use-auth0-client";
+import { useAuth0Client } from "@career-up/shell-router";
 
 const ConnectionsContainer: React.FC = () => {
   const auth0Client = useAuth0Client();

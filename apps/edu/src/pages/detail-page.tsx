@@ -5,11 +5,12 @@ import { selectAtom } from "jotai/utils";
 import { courseAtom } from "../atoms";
 import CourseDetailItem from "../components/course-detail-item";
 import React from "react";
-import useAuth0Client from "../hooks/use-auth0-client";
+
 import type { CourseContentsType } from "../types";
 import { getCourseContents } from "../apis";
 import CourseContents from "../components/course-contents";
 import CourseActions from "../components/course-actions";
+import { useAuth0Client } from "@career-up/shell-router";
 
 export default function DetailPage() {
   const { id = "" } = useParams();

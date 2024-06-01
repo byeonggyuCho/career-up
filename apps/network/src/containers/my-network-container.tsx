@@ -1,11 +1,11 @@
 import { useRecoilState } from "recoil";
 import { myNetworkAtom } from "../atoms";
-import useAuth0Client from "../hooks/use-auth0-client";
 
 import { getMyNetwork } from "../apis";
 import { useCallback } from "react";
 import MyNetwork from "../components/my-network";
 import React from "react";
+import { useAuth0Client } from "@career-up/shell-router";
 
 export default function MyNetworkContainer() {
   const authClient = useAuth0Client();
