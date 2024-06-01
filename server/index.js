@@ -54,6 +54,14 @@ server.get("/my-network", (req, res) => {
   });
 });
 
+server.get("/apply-status", (req, res) => {
+  res.jsonp({
+    myJobsCount: 13,
+    myOnlineClassesCount: 11,
+    mySavedUpdatesCount: 1,
+  });
+});
+
 server.use(jsonServer.bodyParser);
 server.post("/posts", (req, res) => {
   req.body.createAt = new Date().toISOString();
