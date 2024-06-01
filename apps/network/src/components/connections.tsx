@@ -20,8 +20,8 @@ const Connections: React.FC<ConnectionsProps> = ({
     <div className={css.wrapper}>
       <div>서울 인천 지역에 사는 사람</div>
       <div className={css.connections}>
-        {connections.map((connection) => (
-          <Connection {...connection} />
+        {connections.map((connection, index) => (
+          <Connection {...connection} key={index} />
         ))}
       </div>
     </div>
