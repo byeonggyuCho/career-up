@@ -38,5 +38,5 @@ export async function removePost(token: string, id: number): Promise<void> {
 
 export async function getUser(token: string): Promise<UserType> {
   const apiClient = createApiClient(token);
-  return apiClient(`${serverBaseUrl}/posts/user`);
+  return apiClient(`${serverBaseUrl}/user`);
 }

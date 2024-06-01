@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAuth0Client from "../hooks/use-auth0-client";
-import "./page-home.scss";
+import "./home-page.scss";
 import Profile from "../components/Profile";
 import type { PostType } from "../types";
 import { createPost, getPosts, removePost } from "../apis";

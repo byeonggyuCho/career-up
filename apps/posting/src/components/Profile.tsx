@@ -10,7 +10,14 @@ export default function Profile() {
   const [user, setUser] = useState<UserType | null>(null);
 
   useEffect(() => {
-    authClient.getTokenSilently().then(getUser).then(setUser);
+    async function getUserFromToken() {
+      const token = await authClient.getTokenSilently();
+      const user = await getUser(token);
+      console.log({ token, user });
+      setUser(user);
+    }
+
+    getUserFromToken();
   }, [authClient]);
 
   if (!user) return null;
