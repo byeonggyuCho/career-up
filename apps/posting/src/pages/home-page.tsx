@@ -12,7 +12,7 @@ const RecommendsConnectionsContainer = React.lazy(
   () => import("fragment_recommend_connections/container")
 );
 const RecommendsJobsContainer = React.lazy(
-  () => import("job/fragments-recommend-jobs")
+  () => import("job/fragment-recommend-jobs")
 );
 
 export default function HomPage() {
