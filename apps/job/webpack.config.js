@@ -65,7 +65,11 @@ module.exports = (_, argv) => ({
       name: "job",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: { "./injector": "./src/injector.tsx" },
+      exposes: {
+        "./injector": "./src/injector.tsx",
+        "./fragment-recommend-jobs":
+          "./src/fragments/recommend-jobs-container.tsx",
+      },
       shared: {
         ...deps,
         react: {

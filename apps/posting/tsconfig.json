@@ -10,6 +10,14 @@
     "strict": true, // Enable all strict type checking options
     "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
     "module": "esnext", // Specify module code generation
+    "paths": {
+      "fragment_recommend_connections/container": [
+        "../../fragments/fragment-recommend-connections/src/containers/recommend-connections-container.tsx"
+      ],
+      "job/fragments-recommend-jobs": [
+        "../job/src/fragments/recommend-jobs-container.tsx"
+      ]
+    },
     "moduleResolution": "node", // Resolve modules using Node.js style
     "isolatedModules": true, // Unconditionally emit imports for unresolved files
     "resolveJsonModule": true, // Include modules imported with .json extension
