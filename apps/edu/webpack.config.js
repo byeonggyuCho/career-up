@@ -63,9 +63,14 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
-        ...workspacePackages.map((packageName) => ({
-          singleton: true,
-        })),
+        ...workspacePackages.reduce((re, packageName) => {
+          return {
+            ...re,
+            [packageName]: {
+              singleton: true,
+            },
+          };
+        }, {}),
       },
     }),
     new HtmlWebPackPlugin({
