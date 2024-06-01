@@ -4,14 +4,13 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import { appPostingBaseName, microAppRoute } from "./constants/prefix";
+import { microAppRoute } from "./constants/prefix";
 import Layout from "./components/layout";
 import Auth0ProviderWIthNavigator from "./components/auto0-provider-with-navigator";
-
-const AppPostingLazy = lazy(() => import("./components/app-posting"));
-const AppEduLazy = lazy(() => import("./components/app-edu"));
-const AppNetworkLazy = lazy(() => import("./components/app-network"));
-const AppJobLazy = lazy(() => import("./components/app-job"));
+import AppPosting from "./components/app-posting";
+import AppEdu from "./components/app-edu";
+import AppNetwork from "./components/app-network";
+import AppJob from "./components/app-job";
 
 const router = createBrowserRouter([
   {
@@ -24,39 +23,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to={appPostingBaseName}></Navigate>,
+        element: <Navigate to={microAppRoute.posting}></Navigate>,
       },
       {
-        path: `${appPostingBaseName}/*`,
-        element: (
-          <Suspense fallback={<div>로딩중</div>}>
-            <AppPostingLazy />
-          </Suspense>
-        ),
+        path: `${microAppRoute.posting}/*`,
+        element: <AppPosting />,
       },
       {
         path: `${microAppRoute.edu}/*`,
-        element: (
-          <Suspense fallback={<div>로딩중</div>}>
-            <AppEduLazy />
-          </Suspense>
-        ),
+        element: <AppEdu />,
       },
       {
         path: `${microAppRoute.network}/*`,
-        element: (
-          <Suspense fallback={<div>로딩중</div>}>
-            <AppNetworkLazy />
-          </Suspense>
-        ),
+        element: <AppNetwork />,
       },
       {
         path: `${microAppRoute.job}/*`,
-        element: (
-          <Suspense fallback={<div>로딩중</div>}>
-            <AppJobLazy />
-          </Suspense>
-        ),
+        element: <AppJob />,
       },
     ],
   },
