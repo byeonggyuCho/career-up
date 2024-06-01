@@ -2,3 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+// 테일윈드 전역설정이 다른 마이크로앱의 설정을 오염시키는 것을 방지한다.
+
+html {
+    line-height: normal;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f2ee;
+  }
+  
+  img {
+    max-width: none;
+  }
+  
+  button {
+    font-size: revert;
+  }
+  
+  * {
+    box-sizing: revert;
+  }
+  
+  h3,
+  p {
+    all: revert;
+  }
+  
+  .network--mx-w-1128px {
+    max-width: 1128px;
+  }
+  
+  .network--w-225px {
+    width: 225px;
+  }
+  
+  .network--w-879px {
+    width: 879px;
+  }
