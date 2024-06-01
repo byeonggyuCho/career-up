@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { appPostingBaseName, microAppRoute } from "../constants/prefix";
+import { microAppRoute } from "../constants/prefix";
 import { Button, Icon } from "@career-up/ui-kit";
-import Auth0ProviderWIthNavigator from "./auto0-provider-with-navigator";
+
 import { useAuth0 } from "@auth0/auth0-react";
+import { useShellNavigateListener } from "@career-up/shell-router";
 
 const Logo = () => (
   <svg
@@ -30,6 +31,7 @@ const Logo = () => (
 );
 
 export default function Layout() {
+  useShellNavigateListener();
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const handleLogin = () =>
