@@ -1,6 +1,6 @@
 import { type ApplyStatusType, type JobType } from "./types";
 
-const SERVER_URL = process.env.REACT_APP_SERVER_URL!;
+const SERVER_URL = process.env.REACT_APP_API_URL!;
 
 export async function getJobs(token: string): Promise<JobType[]> {
   const res = await fetch(`${SERVER_URL}/jobs`, {
