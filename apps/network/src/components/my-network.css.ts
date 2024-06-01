@@ -1,64 +1,68 @@
 import { style } from "../styles/f.css";
 
 export const topAreaTitle = style([
-  "text-base",
-  "font-bold",
-  "h-4",
-  "leading-4",
+  "network--text-base",
+  "network--font-bold",
+  "network--h-4",
+  "network--leading-4",
 ]);
 
 export const topArea = style([
-  "flex",
-  "flex-col",
-  "bg-white",
-  "px-3",
-  "py-4",
-  "border-solid",
-  "border-b",
-  "border-slate-700",
-  "rounded-tr-lg",
-  "rounded-tl-lg",
-  "gap-2",
+  "network--flex",
+  "network--flex-col",
+  "network--bg-white",
+  "network--px-3",
+  "network--py-4",
+  "network--border-solid",
+  "network--border-b",
+  "network--border-slate-700",
+  "network--rounded-tr-lg",
+  "network--rounded-tl-lg",
+  "network--gap-2",
 ]);
 
 export const topAreaLinks = style([
-  "flex",
-  "flex-col",
-  "bg-white",
-  "py-2",
-  "border-b",
+  "network--flex",
+  "network--flex-col",
+  "network--bg-white",
+  "network--py-2",
+  "network--border-b",
 ]);
 
 export const topAreaLink = [
   style([
-    "flex",
-    "flex-row",
-    "text-base",
-    "text-gray-600",
-    "py-2",
-    "px-3",
-    "justify-between",
+    "network--flex",
+    "network--flex-row",
+    "network--text-base",
+    "network--text-gray-600",
+    "network--py-2",
+    "network--px-3",
+    "network--justify-between",
   ]),
-  "hover:" + style(["bg-gray-200", "cursor-pointer"]),
+  "hover:network--bg-gray-200",
+  "network--cursor-pointer",
 ].join(" ");
 
-export const topAreaLinkCount = style(["text-base", "text-gray-600"]);
+export const topAreaLinkCount = style([
+  "network--text-base",
+  "network--text-gray-600",
+]);
 
-export const img = style(["w-12"]);
+export const img = style(["network--w-12"]);
 
-export const name = style(["text-base", "font-bold"]);
+export const name = style(["network--text-base", "network--font-bold"]);
 
-export const email = style(["text-xs", "text-gray-600"]);
+export const email = style(["network--text-xs", "network--text-gray-600"]);
 
 export const bottomArea = style([
-  "flex",
-  "flex-col",
-  "bg-white",
-  "px-3",
-  "py-4",
-  "rounded-br-lg",
-  "rounded-bl-lg",
-  "gap-2",
-  "justify-center",
-  "items-center",
+  "network--flex",
+  "network--flex-col",
+  "network--bg-white",
+  "network--px-3",
+  "network--py-4",
+  "network--rounded-br-lg",
+  "network--rounded-bl-lg",
+  "network--gap-2",
+  "network--justify-center",
+  "network--items-center",
 ]);

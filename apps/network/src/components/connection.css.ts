@@ -2,24 +2,27 @@ import { style } from "../styles/f.css";
 
 export const wrapper = [
   style([
-    "flex",
-    "flex-col",
-    "bg-white",
-    "p-4",
-    "rounded-lg",
-    "gap-4",
-    "border-solid",
-    "border",
-    "border-slate-700",
-    "items-center",
+    "network--flex",
+    "network--flex-col",
+    "network--bg-white",
+    "network--p-4",
+    "network--rounded-lg",
+    "network--gap-4",
+    "network--border-solid",
+    "network--border",
+    "network--border-slate-700",
+    "network--items-center",
   ]),
-  "hover:" + style(["border-blue-600", "cursor-pointer"]),
+  "hover:network--border-blue-600 cursor-pointer",
 ].join(" ");
 
-export const picture = style(["w-12"]);
+export const picture = style(["network--w-12"]);
 
-export const name = style(["text-base", "font-bold"]);
+export const name = style(["network--text-base", "network--font-bold"]);
 
-export const role = style(["text-xs", "text-gray-600"]);
+export const role = style(["network--text-xs", "network--text-gray-600"]);
 
-export const networkCount = style(["text-xs", "text-gray-600"]);
+export const networkCount = style([
+  "network--text-xs",
+  "network--text-gray-600",
+]);
